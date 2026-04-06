@@ -4,6 +4,7 @@ export const CONTACT_FORM_KEYS = [
   "aplicacion-inicio",
   "contacto-evolucion",
   "aplicacion-expansion",
+  "servicios-info",
 ] as const;
 
 export type ContactFormKey = (typeof CONTACT_FORM_KEYS)[number];
@@ -18,6 +19,7 @@ export const CONTACT_FORM_LABELS: Record<ContactFormKey, string> = {
   "aplicacion-inicio": "¿En qué momento? — Estoy comenzando (aplicación)",
   "contacto-evolucion": "¿En qué momento? — Necesito evolucionar (contacto)",
   "aplicacion-expansion": "¿En qué momento? — Busco expandirme (aplicación)",
+  "servicios-info": "Servicios — +MAS INFO",
 };
 
 /** Estados de lead en el panel */

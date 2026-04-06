@@ -102,7 +102,7 @@ export function LeadsManager({ initialItems }: Props) {
               <th className="px-3 py-3">Nombre</th>
               <th className="px-3 py-3">Email</th>
               <th className="px-3 py-3">Formulario</th>
-              <th className="px-3 py-3">Etapa / nota</th>
+              <th className="px-3 py-3">Sección / etapa</th>
               <th className="px-3 py-3">Estado</th>
               <th className="px-3 py-3 w-24">Mensaje</th>
             </tr>

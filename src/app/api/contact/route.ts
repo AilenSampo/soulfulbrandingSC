@@ -11,6 +11,14 @@ const schema = z.object({
   stageTitle: z.string().max(200).optional(),
 });
 
+const FORM_ORIGIN_FALLBACK: Record<string, string> = {
+  "contacto-corto": "Contacto",
+  "aplicacion-inicio": "Etapas — Estoy comenzando",
+  "contacto-evolucion": "Etapas — Necesito evolucionar",
+  "aplicacion-expansion": "Etapas — Busco expandirme",
+  "servicios-info": "Servicios",
+};
+
 export async function POST(req: Request) {
   const json = await req.json().catch(() => null);
   const parsed = schema.safeParse(json);
@@ -21,7 +29,7 @@ export async function POST(req: Request) {
 
   const formKey =
     rawKey && isContactFormKey(rawKey) ? rawKey : ("contacto-corto" as const);
-  const stageTitle = (rawStage ?? "").trim().slice(0, 200);
+  const stageTitle = ((rawStage ?? "").trim() || FORM_ORIGIN_FALLBACK[formKey] || "General").slice(0, 200);
 
   await prisma.contactMessage.create({
     data: {
