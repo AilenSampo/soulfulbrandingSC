@@ -20,15 +20,19 @@ export function SiteHeader({ nav }: Props) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#333130]/95 text-white backdrop-blur">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-10 xl:px-14 md:py-4">
-        <Link href="/" className="relative h-10 w-[9.5rem] shrink-0 md:h-12 md:w-[11rem]" onClick={() => setOpen(false)}>
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 sm:px-6 md:py-4 lg:px-10 xl:px-14 lg:py-5">
+        <Link
+          href="/"
+          className="relative h-12 w-[min(72vw,13.5rem)] shrink-0 sm:h-14 sm:w-[15rem] md:h-16 md:w-[17rem] lg:h-[4.25rem] lg:w-[19rem]"
+          onClick={() => setOpen(false)}
+        >
           <Image
             src="/brand/logoclaro.png"
             alt="Soulful Branding"
             fill
             className="object-contain object-left"
             priority
-            sizes="(max-width: 768px) 152px, 176px"
+            sizes="(max-width: 640px) 216px, (max-width: 768px) 240px, (max-width: 1024px) 272px, 304px"
           />
         </Link>
         <nav className="hidden items-center gap-7 md:flex lg:gap-10">
