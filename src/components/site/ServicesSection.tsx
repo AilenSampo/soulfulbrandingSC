@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import type { SiteContentData } from "@/lib/site-content";
 import { SectionShell } from "@/components/site/SectionShell";
@@ -14,37 +15,9 @@ const RIBBON = [
   "SOULFUL BRANDING® EXPERIENCE",
   "SOULFUL BRANDING® EXPERIENCE",
 ] as const;
-const SERVICE_DETAILS = [
-  {
-    title: "Identidad de marca",
-    points: [
-      "Esencia de marca",
-      "Narrativa verbal",
-      "Arquitectura conceptual",
-      "Identidad visual",
-      "Sistema de marca",
-    ],
-  },
-  {
-    title: "Estrategia visual",
-    points: [
-      "Materiales complementarios que expandan la percepción y experiencia de la marca en el mercado, basados en la identidad actual.",
-    ],
-  },
-  {
-    title: "Diseño editorial",
-    points: ["Material complementario de carácter institucional, basado en la identidad actual."],
-  },
-  {
-    title: "Presencia digital",
-    points: ["Diseño y/o activación de sitio web, plataformas digitales, redes sociales, membresías, etc."],
-  },
-] as const;
-
 export function ServicesSection({ services }: Props) {
   /** null = ninguna abierta; al salir el cursor del panel crema (título + cards) se vuelve a null */
   const [open, setOpen] = useState<number | null>(null);
-  const [detailOpen, setDetailOpen] = useState<number | null>(null);
 
   return (
     <section
@@ -74,7 +47,6 @@ export function ServicesSection({ services }: Props) {
             className="relative mx-auto max-w-[980px] overflow-hidden bg-[#f5f3ef] pt-6 pb-6 md:px-0 md:pt-6 md:pb-8"
             onMouseLeave={() => {
               setOpen(null);
-              setDetailOpen(null);
             }}
           >
             <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
@@ -98,13 +70,11 @@ export function ServicesSection({ services }: Props) {
           {services.items.map((item, i) => {
             const isOpen = open === i;
             const expanded = isOpen;
-            const showDetails = detailOpen === i;
             return (
               <div
                 key={item.title}
                 onClick={() => {
                   setOpen(i);
-                  if (detailOpen !== i) setDetailOpen(null);
                 }}
                 onMouseEnter={() => setOpen(i)}
                 onFocus={() => setOpen(i)}
@@ -141,43 +111,21 @@ export function ServicesSection({ services }: Props) {
                   {item.title}
                 </span>
                 {expanded && (
-                  <>
-                    {!showDetails && (
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setDetailOpen(i);
-                        }}
-                        className="mt-auto w-fit px-3 pb-3 text-[0.9rem] font-bold uppercase tracking-[0.05em] text-white/90 hover:text-white md:px-4 md:pb-4"
-                      >
-                        +INFO
-                      </button>
-                    )}
-                    {showDetails && SERVICE_DETAILS[i] && (
-                      <div className="px-3 pb-3 md:px-4 md:pb-4">
-                        <ol className="space-y-1.5 pl-4 text-[0.88rem] leading-relaxed text-white/90 md:text-[0.96rem]">
-                          {SERVICE_DETAILS[i].points.map((point, idx) => (
-                            <li key={`${i}-${idx}`}>{point}</li>
-                          ))}
-                        </ol>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setDetailOpen(null);
-                          }}
-                          className="mt-3 w-fit text-[0.8rem] font-bold uppercase tracking-[0.05em] text-white/75 hover:text-white"
-                        >
-                          Cerrar info
-                        </button>
-                      </div>
-                    )}
-                  </>
+                  <p className="px-3 pb-3 text-[0.9rem] leading-relaxed text-white/90 md:px-4 md:pb-4 md:text-[0.96rem]">
+                    {item.description}
+                  </p>
                 )}
               </div>
             );
           })}
+              </div>
+              <div className="mt-5 flex justify-center">
+                <Link
+                  href="/?etapa=Servicios&formulario=servicios-info#contacto"
+                  className="inline-flex rounded-full border border-brand-navy/30 bg-[#f5f3ef]/95 px-5 py-2 text-[0.82rem] font-bold uppercase tracking-[0.08em] text-brand-navy transition hover:bg-white"
+                >
+                  +MAS INFO
+                </Link>
               </div>
             </div>
           </div>

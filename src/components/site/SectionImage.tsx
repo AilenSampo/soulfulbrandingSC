@@ -28,6 +28,10 @@ export function SectionImage({ src, alt, className, imgClassName, priority }: Pr
     );
   }
   const useImgTag = typeof src === "string" && isRemote(src);
+  const isLocalPublic =
+    typeof src === "string" && src.startsWith("/") && !isRemote(src);
+  /** En local el optimizador (`/_next/image`) a veces falla en Windows; servimos el archivo tal cual en dev. */
+  const unoptimizedDev = process.env.NODE_ENV === "development" && isLocalPublic;
   return (
     <div className={cn("relative overflow-hidden", className)}>
       {useImgTag ? (
@@ -41,6 +45,7 @@ export function SectionImage({ src, alt, className, imgClassName, priority }: Pr
           sizes="(max-width: 768px) 100vw, 50vw"
           className={cn("object-cover", imgClassName)}
           priority={priority}
+          unoptimized={unoptimizedDev}
         />
       )}
     </div>

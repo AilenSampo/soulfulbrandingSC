@@ -468,7 +468,6 @@ function ContactSectionContent({
                 </p>
               ))}
             </div>
-            <SocialRow contact={contact} className="mt-6 justify-center" />
           </div>
         </div>
       </SectionShell>

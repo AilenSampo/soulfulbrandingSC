@@ -480,6 +480,165 @@ export const STAGE_FORMS: Record<StageFormId, StageFormDefinition> = {
       },
     ],
   },
+  "servicios-info": {
+    id: "servicios-info",
+    title: "Formulario de servicios",
+    welcome:
+      "Este espacio es para revisar tu marca con honestidad y profundidad. Lo que hoy no encaja, también es información valiosa.",
+    sections: [
+      {
+        heading: "Tus datos",
+        fields: [
+          { name: "name", label: "Nombre completo", required: true, bind: "name" },
+          { name: "email", label: "Email", required: true, bind: "email" },
+        ],
+      },
+      {
+        heading: "Sobre tu marca actual",
+        fields: [
+          { name: "nombre_marca", label: "Nombre de marca", required: true },
+          { name: "web_redes", label: "Web / redes", multiline: true, rows: 2, required: true },
+          { name: "dedicacion_actual", label: "¿A qué te dedicas actualmente?", multiline: true, rows: 2, required: true },
+          { name: "antiguedad", label: "¿Hace cuánto existe tu marca?", multiline: true, rows: 2, required: true },
+        ],
+      },
+      {
+        heading: "Momento actual",
+        fields: [
+          {
+            name: "ya_no_representa",
+            label: "¿Sientes que ya no representa quién eres hoy?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+          {
+            name: "que_ha_cambiado",
+            label: "¿Qué ha cambiado en ti o en tu negocio?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+          {
+            name: "incomoda",
+            label: "¿Qué parte de tu marca te incomoda o limita?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+        ],
+      },
+      {
+        heading: "Percepción externa",
+        fields: [
+          {
+            name: "comunica_hoy",
+            label: "¿Qué crees que comunica tu marca hoy?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+          {
+            name: "que_dicen",
+            label: "¿Qué te dicen otros sobre ella?",
+            multiline: true,
+            rows: 2,
+            required: true,
+          },
+          {
+            name: "coherencia",
+            label: "¿Sientes coherencia entre lo que eres y lo que muestras?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+        ],
+      },
+      {
+        heading: "Profundidad",
+        fields: [
+          {
+            name: "inercia",
+            label: "¿Qué estás sosteniendo por inercia?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+          { name: "miedo_soltar", label: "¿Qué te daría miedo soltar?", multiline: true, rows: 2, required: true },
+          {
+            name: "version_emerge",
+            label: "¿Qué versión de tu marca está pidiendo emerger?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+        ],
+      },
+      {
+        heading: "Dirección",
+        fields: [
+          {
+            name: "transformar_proceso",
+            label: "¿Qué te gustaría transformar a través de este proceso?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+          {
+            name: "sentirse_despues",
+            label: "¿Cómo debería sentirse tu marca después de evolucionar?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+        ],
+      },
+      {
+        heading: "Decisión",
+        fields: [
+          {
+            name: "cambio_ahora",
+            label: "¿Por qué quieres hacer este cambio ahora?",
+            multiline: true,
+            rows: 3,
+            required: true,
+          },
+          {
+            name: "si_no_proceso",
+            label: "¿Qué pasaría si no haces este proceso?",
+            multiline: true,
+            rows: 2,
+            required: true,
+          },
+        ],
+      },
+      {
+        heading: "Inversión y tiempos",
+        fields: [
+          { name: "rango_inversion", label: "¿Qué rango de inversión contemplas?", multiline: true, rows: 2, required: true },
+          {
+            name: "cuando_comenzar",
+            label: "¿Cuándo te gustaría comenzar?",
+            multiline: true,
+            rows: 2,
+            required: true,
+          },
+        ],
+      },
+      {
+        heading: "Cierre",
+        fields: [
+          {
+            name: "por_que_sofia",
+            label: "¿Por qué sientes que soy la persona indicada para acompañarte en esta evolución?",
+            multiline: true,
+            rows: 4,
+            required: true,
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export function getStageForm(id: StageFormId): StageFormDefinition {

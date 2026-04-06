@@ -8,7 +8,12 @@ export type ServiceItem = {
 };
 
 /** Formulario asociado a la etapa (coincide con `momentos.md` y query `formulario`) */
-export const STAGE_FORM_IDS = ["aplicacion-inicio", "contacto-evolucion", "aplicacion-expansion"] as const;
+export const STAGE_FORM_IDS = [
+  "aplicacion-inicio",
+  "contacto-evolucion",
+  "aplicacion-expansion",
+  "servicios-info",
+] as const;
 export type StageFormId = (typeof STAGE_FORM_IDS)[number];
 
 export type StageItem = {

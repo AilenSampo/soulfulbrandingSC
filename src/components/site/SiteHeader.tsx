@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import type { NavItem } from "@/lib/site-content";
 import { cn } from "@/lib/cn";
@@ -20,19 +19,17 @@ export function SiteHeader({ nav }: Props) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#333130]/95 text-white backdrop-blur">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 sm:px-6 md:py-4 lg:px-10 xl:px-14 lg:py-5">
-        <Link
-          href="/"
-          className="relative h-12 w-[min(72vw,13.5rem)] shrink-0 sm:h-14 sm:w-[15rem] md:h-16 md:w-[17rem] lg:h-[4.25rem] lg:w-[19rem]"
-          onClick={() => setOpen(false)}
-        >
-          <Image
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-3 lg:px-10 xl:px-14 lg:py-4">
+        <Link href="/" className="flex shrink-0 items-center self-center" onClick={() => setOpen(false)}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/brand/logoclaro.png"
             alt="Soulful Branding"
-            fill
-            className="object-contain object-left"
-            priority
-            sizes="(max-width: 640px) 216px, (max-width: 768px) 240px, (max-width: 1024px) 272px, 304px"
+            width={320}
+            height={72}
+            className="h-9 w-auto max-w-[min(74vw,12.8rem)] object-contain object-left sm:h-10 sm:max-w-[14.5rem] md:h-10 md:max-w-[15.5rem] lg:h-10 lg:max-w-[16.8rem] xl:h-11 xl:max-w-[18rem]"
+            decoding="async"
+            fetchPriority="high"
           />
         </Link>
         <nav className="hidden items-center gap-7 md:flex lg:gap-10">
@@ -40,7 +37,7 @@ export function SiteHeader({ nav }: Props) {
             <Link
               key={item.href + item.label}
               href={item.href}
-              className="text-[11px] font-semibold tracking-[0.03em] text-white/95 transition hover:text-white/70 lg:text-xl"
+              className="leading-none text-[11px] font-semibold tracking-[0.03em] text-white/95 transition hover:text-white/70 lg:text-[1.05rem]"
             >
               {item.label}
             </Link>
