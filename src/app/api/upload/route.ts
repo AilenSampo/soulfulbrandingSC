@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
+import { put } from "@vercel/blob";
 import { imageSize } from "image-size";
 import { isAdminRequest } from "@/lib/auth-api";
 
@@ -53,12 +54,28 @@ export async function POST(req: Request) {
     }
     const ext = path.extname(file.name) || (file.type === "image/png" ? ".png" : ".jpg");
     const name = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}${ext}`;
+    const onVercel = process.env.VERCEL === "1";
+    if (onVercel) {
+      const token = process.env.BLOB_READ_WRITE_TOKEN;
+      if (!token) {
+        return NextResponse.json(
+          { error: "Falta configurar BLOB_READ_WRITE_TOKEN en Vercel." },
+          { status: 500 },
+        );
+      }
+      const blob = await put(`uploads/${name}`, buf, {
+        access: "public",
+        contentType: file.type || "application/octet-stream",
+        token,
+      });
+      return NextResponse.json({ url: blob.url });
+    }
+
     const dir = path.join(process.cwd(), "public", "uploads");
     await mkdir(dir, { recursive: true });
     const fsPath = path.join(dir, name);
     await writeFile(fsPath, buf);
-    const url = `/uploads/${name}`;
-    return NextResponse.json({ url });
+    return NextResponse.json({ url: `/uploads/${name}` });
   } catch (error) {
     console.error("[api/upload] upload failed", error);
     return NextResponse.json(
