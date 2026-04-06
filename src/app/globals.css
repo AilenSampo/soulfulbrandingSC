@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sb-bg: #f2f2f2;
+  --sb-navy: #131945;
+  --sb-sky: #c9e2ff;
+  --sb-blue: #323ff6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-brand-page font-sans text-brand-navy antialiased;
+}
+
+@layer utilities {
+  /** Titular “Servicios” tipo mockup — contorno navy sobre amarillo pálido */
+  .sb-outline-text {
+    -webkit-text-stroke: 1px rgba(19, 25, 69, 0.35);
+    color: transparent;
+  }
+
+}

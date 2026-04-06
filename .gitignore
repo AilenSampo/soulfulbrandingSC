@@ -1,0 +1,11 @@
+node_modules
+.next
+# Secretos y entornos locales (nunca subir)
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+public/uploads/*
+!public/uploads/.gitkeep
+private-notes/

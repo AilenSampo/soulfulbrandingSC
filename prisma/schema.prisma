@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model SiteContent {
+  id   Int    @id @default(1)
+  data Json
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String   @default("")
+  description String   @default("")
+  imageUrl    String   @default("")
+  category    String   @default("")
+  order       Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactMessage {
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  message    String
+  /** contacto-corto | aplicacion-inicio | contacto-evolucion | aplicacion-expansion */
+  formKey    String   @default("contacto-corto")
+  /** Etapa elegida (formulario corto o momentos), texto libre corto */
+  stageTitle String   @default("")
+  /** nuevo | contactado | archivado */
+  status     String   @default("nuevo")
+  createdAt  DateTime @default(now())
+}
