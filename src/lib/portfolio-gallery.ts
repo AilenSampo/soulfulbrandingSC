@@ -1,28 +1,28 @@
-import fs from "fs";
 import path from "path";
 import { PORTFOLIO_ALLOWED_PROJECT_IDS } from "@/lib/portfolio-allowed-ids";
-
-const ROOT = path.join(process.cwd(), "public", "portfolio-media");
+import galleryManifest from "@/data/portfolio-gallery-manifest.json";
 
 const ALLOWED_EXT = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp4"]);
 const ALLOWED_IDS = new Set<string>(PORTFOLIO_ALLOWED_PROJECT_IDS);
 
 export type PortfolioGalleryFile = { filename: string; kind: "image" | "video" };
 
-/** Lista imágenes y vídeos de la carpeta del proyecto (excluye portadas duplicadas cover-*). Solo servidor. */
+const manifest = galleryManifest as Record<string, string[]>;
+
+/**
+ * Galería por proyecto: lista fija en `portfolio-gallery-manifest.json` (evita `fs` en el servidor;
+ * Vercel no empaqueta cientos de MB en la función `portfolio/[slug]`).
+ */
 export function getPortfolioGalleryFiles(projectId: string): PortfolioGalleryFile[] {
   if (!ALLOWED_IDS.has(projectId)) return [];
 
-  const dir = path.join(ROOT, projectId);
-  if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) return [];
+  const raw = manifest[projectId];
+  if (!raw?.length) return [];
 
-  const files = fs.readdirSync(dir).filter((f) => {
-    const lower = f.toLowerCase();
-    if (lower.startsWith("cover-")) return false;
+  const files = raw.filter((f) => {
     const ext = path.extname(f).toLowerCase();
     return ALLOWED_EXT.has(ext);
   });
-
   files.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
 
   return files.map((filename) => ({
