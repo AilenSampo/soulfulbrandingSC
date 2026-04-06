@@ -10,7 +10,7 @@ import { SectionShell } from "@/components/site/SectionShell";
 import { HERO_PAPER_TEXTURE_URL } from "@/components/site/HeroSection";
 import { cn } from "@/lib/cn";
 import bookPortrait from "../../../assets/images/shared/book-portrait.png";
-import floorPortrait from "../../../assets/images/shared/sofia-creative-process-floor.JPG";
+import floorPortrait from "../../../assets/images/shared/sofia-creative-process-floor.jpg";
 
 type Props = {
   contact: SiteContentData["contact"];
