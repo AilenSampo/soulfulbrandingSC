@@ -28,7 +28,7 @@ export function HeroSection({ hero }: Props) {
   const lineTwo = "That’s WHY Soulful Branding®.";
 
   return (
-    <section id="hero" className="relative overflow-visible bg-brand-cream">
+    <section id="hero" className="relative overflow-x-hidden bg-brand-cream">
       <div
         className="pointer-events-none absolute inset-0 opacity-100"
         style={{
@@ -71,7 +71,7 @@ export function HeroSection({ hero }: Props) {
         </div>
 
         {/* pb en móvil: reserva aire bajo la foto para que los pies del recorte no tapen el titular siguiente */}
-        <div className="relative z-0 mx-auto mt-12 w-full max-w-[1120px] pb-24 sm:pb-28 md:mt-14 md:pb-0">
+        <div className="relative z-0 mx-auto mt-12 w-full max-w-[1120px] overflow-x-hidden pb-24 sm:pb-28 md:mt-14 md:pb-0">
           {/* z-10: franja cielo (móvil: titular blanco dentro; desktop: titular negro va en capa hermana para que sobresalga del ancho del sky) */}
           <div className="relative z-10 mx-auto w-full max-w-[980px] overflow-hidden bg-brand-sky/95 md:overflow-visible">
             {/* eslint-disable-next-line @next/next/no-img-element */}
