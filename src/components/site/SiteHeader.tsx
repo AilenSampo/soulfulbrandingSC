@@ -21,13 +21,14 @@ export function SiteHeader({ nav }: Props) {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#333130]/95 text-white backdrop-blur">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-10 xl:px-14 md:py-4">
-        <Link href="/" className="relative h-10 w-[4.25rem] shrink-0 md:h-12 md:w-[5rem]" onClick={() => setOpen(false)}>
+        <Link href="/" className="relative h-10 w-[9.5rem] shrink-0 md:h-12 md:w-[11rem]" onClick={() => setOpen(false)}>
           <Image
-            src="/brand/sc-so-logo.svg"
+            src="/brand/logoclaro.png"
             alt="Soulful Branding"
             fill
             className="object-contain object-left"
             priority
+            sizes="(max-width: 768px) 152px, 176px"
           />
         </Link>
         <nav className="hidden items-center gap-7 md:flex lg:gap-10">

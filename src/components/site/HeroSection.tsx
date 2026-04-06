@@ -27,6 +27,10 @@ export function HeroSection({ hero }: Props) {
   const lineOne = "Mi trabajo consiste en acompañar ese proceso.";
   const lineTwo = "That’s WHY Soulful Branding®.";
 
+  /** Misma escala tipográfica que el título de la sección Etapas (“¿En qué momento estás?”). */
+  const brandOverSkyClassName =
+    "mx-auto max-w-[18ch] text-center font-sans text-[clamp(1.2rem,4.8vw,2.5rem)] font-bold leading-[1.2] tracking-tight sm:max-w-[22ch] md:max-w-none md:text-[clamp(1.65rem,3.2vw,2.65rem)] md:leading-[1.18]";
+
   return (
     <section id="hero" className="relative overflow-x-hidden bg-brand-cream">
       <div
@@ -76,8 +80,8 @@ export function HeroSection({ hero }: Props) {
           <div className="relative z-10 mx-auto w-full max-w-[980px] overflow-hidden bg-brand-sky/95 md:overflow-visible">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/media/sky-band.png" alt="" className="h-[180px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[270px]" />
-            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center md:hidden">
-              <p className="text-center font-sans text-[clamp(3.6rem,16vw,8.9rem)] font-bold leading-none tracking-[-0.02em] text-white/45">
+            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center px-3 md:hidden">
+              <p className={`${brandOverSkyClassName} text-white/45`}>
                 {a}
                 <br />
                 {b}
@@ -85,11 +89,9 @@ export function HeroSection({ hero }: Props) {
             </div>
           </div>
 
-          {/* Desktop: centrado en la altura del bloque (solo el sky aporta altura); tipografía más ancha que max-w-[980px] del sky */}
-          <div className="pointer-events-none absolute inset-x-0 top-1/2 z-20 hidden -translate-y-1/2 md:block">
-            <p className="whitespace-nowrap text-center font-sans text-[clamp(4.25rem,11vw,10.5rem)] font-bold leading-none tracking-[-0.035em] text-black">
-              {brandLabel}
-            </p>
+          {/* Desktop: misma escala que el título de Etapas */}
+          <div className="pointer-events-none absolute inset-x-0 top-1/2 z-20 hidden -translate-y-1/2 px-4 md:block">
+            <p className={`${brandOverSkyClassName} text-black`}>{brandLabel}</p>
           </div>
 
           {/* z-30: modelo; en móvil un poco más arriba para acortar solape hacia el texto de abajo */}
