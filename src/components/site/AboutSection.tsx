@@ -12,10 +12,10 @@ export function AboutSection({ about }: Props) {
   return (
     <section
       id="about"
-      className="scroll-mt-24 bg-brand-cream pb-24 pt-14 md:py-12 md:pb-14 lg:py-14 lg:pb-16"
+      className="scroll-mt-24 bg-brand-cream pb-20 pt-14 md:py-10 md:pb-12 lg:py-12 lg:pb-14"
     >
       <SectionShell>
-        <div className="grid grid-cols-1 gap-0 md:grid-cols-2 md:items-start md:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-2 md:items-center md:gap-8 lg:gap-10">
           {/* Mobile: títulos + imagen con overlay */}
           <div className="md:col-span-2 md:hidden">
             <div className="text-center">
@@ -52,26 +52,26 @@ export function AboutSection({ about }: Props) {
             </div>
           </div>
 
-          <div className="relative mx-auto hidden aspect-[3/4] w-full max-w-lg overflow-hidden rounded-sm shadow-[0_20px_50px_-20px_rgba(19,25,69,0.35)] md:mx-0 md:block md:max-w-[524px] md:justify-self-start">
-            <SectionImage src={about.imageUrl} alt="About" className="absolute inset-0 h-full w-full" imgClassName="object-cover" />
+          <div className="relative mx-auto hidden w-full overflow-hidden rounded-sm shadow-[0_20px_50px_-20px_rgba(19,25,69,0.35)] md:mx-0 md:block md:h-[500px] md:w-[min(44vw,500px)] md:max-w-none md:justify-self-start lg:h-[540px] lg:w-[min(42vw,540px)]">
+            <SectionImage src={about.imageUrl} alt="About" className="absolute inset-0 h-full w-full" imgClassName="object-cover object-[center_24%]" />
           </div>
-          <div className="hidden max-w-xl md:block md:max-w-md md:justify-self-end lg:max-w-lg">
+          <div className="hidden max-w-xl md:flex md:min-h-[500px] md:max-w-md md:flex-col md:items-center md:justify-center md:justify-self-center md:text-center lg:min-h-[540px] lg:max-w-lg">
             <h2 className="font-serif text-[clamp(3rem,8vw,4.5rem)] font-semibold italic leading-[0.95] tracking-tight text-brand-blue md:text-[clamp(2.5rem,3.8vw,3.5rem)] lg:text-[clamp(2.75rem,4vw,4rem)]">
               {about.heading}
             </h2>
-            <p className="mt-7 text-base font-normal leading-[1.65] text-brand-navy/88 md:mt-4 md:text-[0.9375rem] md:leading-[1.55] lg:mt-5 lg:text-base lg:leading-[1.6]">
+            <p className="mt-8 text-base font-normal leading-[1.65] text-brand-navy/88 md:text-[0.9375rem] md:leading-[1.55] lg:mt-9 lg:text-base lg:leading-[1.6]">
               {about.body}
             </p>
             <Link
               href="/about"
-              className="mt-9 inline-block text-xs font-bold uppercase tracking-[0.35em] text-brand-navy transition hover:opacity-70 md:mt-5 lg:mt-6"
+              className="mt-10 inline-block text-xs font-bold uppercase tracking-[0.35em] text-brand-navy transition hover:opacity-70 md:mt-9 lg:mt-10"
             >
               {about.readMoreLabel}
             </Link>
           </div>
 
           {about.finePrint ? (
-            <p className={`mt-6 md:col-span-2 md:mt-4 ${finePrintClass}`}>{about.finePrint}</p>
+            <p className={`mt-5 md:col-span-2 md:mt-3 ${finePrintClass}`}>{about.finePrint}</p>
           ) : null}
         </div>
       </SectionShell>

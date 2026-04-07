@@ -55,7 +55,7 @@ export function StagesSection({ stages }: Props) {
 
         <div className="relative mt-7 grid gap-8 pb-[5rem] md:mt-12 md:grid-cols-2 md:items-center md:gap-10 md:pb-20 lg:mt-14 lg:gap-14 lg:pb-24">
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] px-4 sm:px-5 md:px-6 lg:px-8"
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] px-4 sm:px-5 md:-bottom-3 md:px-6 lg:-bottom-5 lg:px-8"
             aria-hidden
           >
             <Image
@@ -63,7 +63,7 @@ export function StagesSection({ stages }: Props) {
               alt=""
               width={1600}
               height={360}
-              className="mx-auto h-auto w-full max-w-full origin-bottom object-contain object-bottom opacity-[0.92] max-md:translate-y-1 max-md:scale-[0.72] scale-[0.88] sm:scale-90 md:translate-y-0 md:scale-[0.97] lg:scale-[1] xl:scale-[1.04]"
+              className="mx-auto h-auto w-full max-w-full origin-bottom object-contain object-bottom opacity-[0.92] max-md:translate-y-1 max-md:scale-[0.72] scale-[0.88] sm:scale-90 md:translate-y-5 md:scale-[0.97] lg:translate-y-8 lg:scale-[1] xl:translate-y-10 xl:scale-[1.04]"
               priority={false}
             />
           </div>

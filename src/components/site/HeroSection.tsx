@@ -13,13 +13,10 @@ type Props = { hero: SiteContentData["hero"] };
 export function HeroSection({ hero }: Props) {
   const kicker = "SOULFUL BRANDING® EXPERIENCE";
   const heading = "Cuando una marca entiende quién es y qué representa, su identidad se vuelve magnética.";
-  const headingDesktopLine1 = "Cuando una marca entiende quién es y qué representa,";
-  const headingDesktopLine2 = "su identidad se vuelve magnética.";
   /** Mobile mockup: máx. 3 líneas arriba de la foto; el resto debajo de la foto */
   const headingMobileLineClass =
     "mx-auto max-w-[min(92vw,22rem)] px-4 text-center font-sans text-[clamp(1.28rem,5.2vw,1.9rem)] font-bold leading-[1.22] tracking-[-0.01em] text-black";
   const lineOne = "Mi trabajo consiste en acompañar ese proceso.";
-  const lineTwo = "That’s WHY Soulful Branding®.";
 
   /** Wordmark levemente más grande y con rebalse lateral controlado. */
   const wordmarkClass =
@@ -51,20 +48,21 @@ export function HeroSection({ hero }: Props) {
           <p>
             Cuando una marca
             <br />
-            entiende <strong className="font-bold">quién</strong> es y qué
+            entiende <strong className="font-bold">quién es y qué representa</strong>
             <br />
-            representa
+            &nbsp;
           </p>
         </div>
 
         <div
           aria-hidden
-          className="relative z-20 mx-auto mt-6 hidden max-w-[44ch] text-center font-sans text-[clamp(1.5rem,1.45vw,1.75rem)] font-bold leading-[1.2] tracking-[-0.01em] text-black md:block"
+          className="relative z-20 mx-auto mt-6 hidden max-w-[min(94vw,68rem)] text-center font-sans text-[clamp(1.35rem,2.05vw,2.1rem)] font-bold leading-[1.15] tracking-[-0.01em] text-black md:block"
         >
           <p>
-            {headingDesktopLine1}
-            <br />
-            {headingDesktopLine2}
+            <span className="block whitespace-nowrap">
+              Cuando una marca entiende <strong className="font-extrabold">quién es y qué representa</strong>,
+            </span>
+            <span className="block whitespace-nowrap">su identidad se vuelve magnética.</span>
           </p>
         </div>
 
@@ -77,7 +75,14 @@ export function HeroSection({ hero }: Props) {
               alt=""
               className="block h-[180px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[270px]"
             />
-            <div className="pointer-events-none absolute -inset-x-5 inset-y-0 z-20 flex items-center justify-center sm:-inset-x-7 md:-inset-x-10 lg:-inset-x-12">
+            <div className="pointer-events-none absolute inset-x-0 top-1/2 z-20 -translate-y-1/2 text-center md:hidden">
+              <p className="font-sans text-[clamp(2.35rem,15.5vw,3.3rem)] font-bold leading-[0.9] tracking-[-0.02em] text-white [text-shadow:0_1px_1px_rgba(0,0,0,0.18)]">
+                Soulful
+                <br />
+                Branding®
+              </p>
+            </div>
+            <div className="pointer-events-none absolute -inset-x-5 inset-y-0 z-20 hidden items-center justify-center sm:-inset-x-7 md:flex md:-inset-x-10 lg:-inset-x-12">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={SOULFUL_BRAND_WORDMARK_SRC} alt="" className={wordmarkClass} />
             </div>
@@ -107,7 +112,7 @@ export function HeroSection({ hero }: Props) {
             {lineOne}
           </p>
           <p className="mt-1 font-sans text-[clamp(1rem,1.6vw,1.45rem)] font-normal leading-[1.25] text-black md:text-[clamp(1rem,1.2vw,1.2rem)]">
-            {lineTwo}
+            That’s <strong className="font-bold">WHY</strong> Soulful Branding®.
           </p>
         </div>
       </SectionShell>

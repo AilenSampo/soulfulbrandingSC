@@ -70,7 +70,7 @@ export function EssenceSection({ essence }: Props) {
             <h2 className="font-serif text-[clamp(2.45rem,3.5vw,3.85rem)] font-medium leading-[0.95] tracking-tight text-white">
               {headline}
             </h2>
-            <ul className="mt-9 space-y-2.5 text-left text-[clamp(1.15rem,1.55vw,1.45rem)] leading-[1.45] text-white/95">
+            <ul className="mt-14 space-y-2.5 text-left text-[clamp(1.15rem,1.55vw,1.45rem)] leading-[1.45] text-white/95 lg:mt-16">
               {lines.map((line) => (
                 <li key={line}>
                   <span className="font-semibold">{line.split(" ").slice(0, 2).join(" ")}</span>{" "}
