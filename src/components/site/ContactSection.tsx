@@ -312,11 +312,11 @@ function ContactSectionContent({
       <SectionShell className="relative z-10">
         {/* ——— Móvil: mockup editorial (título serif → form → doble foto → marca sobre imágenes → redes) ——— */}
         <div className="space-y-8 pb-6 lg:hidden">
-          <header className="text-center">
+          <header className="text-left">
             <h2 className="font-serif text-[clamp(2.4rem,11vw,3.75rem)] font-semibold italic leading-[1.05] tracking-[-0.02em] text-brand-navy">
               {headingMobile}
             </h2>
-            <p className="mx-auto mt-5 max-w-md px-1 text-[0.95rem] leading-[1.65] text-neutral-800">
+            <p className="mt-5 max-w-md px-1 text-[0.95rem] leading-[1.65] text-neutral-800">
               {contact.intro}
             </p>
           </header>
@@ -374,7 +374,7 @@ function ContactSectionContent({
                 {footerLines.map((line) => (
                   <p
                     key={line}
-                    className="font-sans text-[9px] font-bold uppercase tracking-[0.18em] text-brand-navy/85 sm:text-[10px]"
+                    className="font-sans text-[9px] font-bold uppercase tracking-normal text-brand-navy/85 sm:text-[10px]"
                   >
                     {line}
                   </p>
@@ -462,7 +462,7 @@ function ContactSectionContent({
               {footerLines.map((line) => (
                 <p
                   key={line}
-                  className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-brand-navy/80 md:text-[11px]"
+                  className="font-sans text-[10px] font-bold uppercase tracking-normal text-brand-navy/80 md:text-[11px]"
                 >
                   {line}
                 </p>

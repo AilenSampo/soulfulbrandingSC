@@ -281,7 +281,7 @@ export const defaultSiteContent = (): SiteContentData => ({
         showInfo: true,
       },
     ],
-    imageUrl: "/media/about-expanded-top-left-seated-laptop.png",
+    imageUrl: "/media/stages-sofia-laptop.png",
     activeIndex: 0,
   },
   services: {

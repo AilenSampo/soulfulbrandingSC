@@ -18,8 +18,8 @@ export function EssenceSection({ essence }: Props) {
     <section id="esencia" className="bg-[#4248B5] py-14 text-white md:py-16 lg:py-20">
       <SectionShell className="relative">
         <div className="md:hidden">
-          <div className="grid grid-cols-[1fr_auto] items-start gap-3">
-            <h2 className="max-w-[min(52vw,9.75rem)] font-serif text-[clamp(1.85rem,6.4vw,3rem)] font-medium italic leading-[1.06] tracking-tight text-white">
+          <div className="grid grid-cols-[1fr_auto] items-start gap-2">
+            <h2 className="max-w-[min(56vw,11.75rem)] font-serif text-[clamp(2.35rem,9vw,3.65rem)] font-medium italic leading-[1.02] tracking-tight text-white">
               Toda
               <br />
               marca
@@ -28,7 +28,7 @@ export function EssenceSection({ essence }: Props) {
               <br />
               esencia.
             </h2>
-            <div className="relative mt-3 w-[42vw] max-w-[200px]">
+            <div className="relative mt-4 w-[36vw] max-w-[168px]">
               <div className="relative aspect-[3/4] w-full overflow-hidden shadow-[0_16px_30px_-12px_rgba(0,0,0,0.35)]">
                 <SectionImage src={bookPortrait} alt="" className="absolute inset-0 h-full w-full" imgClassName="object-cover" />
                 <div className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-8 items-center pr-0.5">
@@ -36,7 +36,7 @@ export function EssenceSection({ essence }: Props) {
                   <img src="/brand/sc-so-logo.svg" alt="" className="h-6 w-auto opacity-50 brightness-0 invert" />
                 </div>
               </div>
-              <div className="pointer-events-none absolute -left-[58%] -top-[28%] z-20 w-[100%] max-w-[210px]">
+              <div className="pointer-events-none absolute -left-[54%] -top-[22%] z-20 w-[92%] max-w-[150px]">
                 <SectionImage
                   src="/media/about-buddha-fuchsia.png"
                   alt=""
@@ -92,6 +92,11 @@ export function EssenceSection({ essence }: Props) {
           <div className="absolute bottom-0 left-[56px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/brand/sc-so-logo.svg" alt="" className="h-6 w-auto opacity-50 brightness-0 invert" />
+          </div>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/40 md:text-[11px] md:tracking-[0.2em]">
+              SOULFUL BRANDING® EXPERIENCE
+            </p>
           </div>
           <div className="absolute bottom-0 right-[16px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}

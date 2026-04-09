@@ -37,14 +37,14 @@ export function HeroSection({ hero }: Props) {
       />
       <div className="pointer-events-none absolute inset-0 bg-brand-sky/8" aria-hidden />
 
-      <SectionShell className="relative z-10 py-10 md:py-10 lg:py-12">
-        <p className="text-center text-[10px] font-bold uppercase tracking-[0.16em] text-black/35 md:text-[11px] md:tracking-[0.2em]">
+      <SectionShell className="relative z-10 py-8 md:py-10 lg:py-12">
+        <p className="hidden text-center text-[10px] font-bold uppercase tracking-[0.16em] text-black/35 md:block md:text-[11px] md:tracking-[0.2em]">
           {kicker}
         </p>
 
         <h1 className="sr-only">{heading}</h1>
 
-        <div aria-hidden className={`relative z-20 mt-6 md:hidden ${headingMobileLineClass}`}>
+        <div aria-hidden className={`relative z-20 mt-4 md:hidden ${headingMobileLineClass}`}>
           <p>
             Cuando una marca
             <br />
@@ -67,7 +67,7 @@ export function HeroSection({ hero }: Props) {
         </div>
 
         {/* Bloque cielo + wordmark (ancho completo del sky) + modelo delante */}
-        <div className="relative z-0 mx-auto mt-12 w-full max-w-[1120px] pb-24 sm:pb-28 md:mt-14 md:pb-0">
+        <div className="relative z-0 mx-auto mt-8 w-full max-w-[1120px] pb-24 sm:pb-28 md:mt-14 md:pb-0">
           <div className="relative z-10 mx-auto w-full max-w-[980px] bg-brand-sky/95">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -88,7 +88,7 @@ export function HeroSection({ hero }: Props) {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute left-1/2 top-[52%] z-30 w-[48%] max-w-[260px] -translate-x-1/2 -translate-y-1/2 sm:top-[54%] sm:w-[50%] md:top-[50%] md:w-[21%] md:max-w-[235px] lg:top-[48%] lg:w-[23%] lg:max-w-[260px]">
+          <div className="pointer-events-none absolute left-1/2 top-[42%] z-30 w-[48%] max-w-[260px] -translate-x-1/2 -translate-y-1/2 sm:top-[47%] sm:w-[50%] md:top-[50%] md:w-[21%] md:max-w-[235px] lg:top-[48%] lg:w-[23%] lg:max-w-[260px]">
             <SectionImage
               src={hero.imageUrl}
               alt=""
@@ -99,7 +99,7 @@ export function HeroSection({ hero }: Props) {
           </div>
         </div>
 
-        <div aria-hidden className={`relative z-40 mt-6 md:hidden ${headingMobileLineClass}`}>
+        <div aria-hidden className={`relative z-40 mt-4 md:hidden ${headingMobileLineClass}`}>
           <p>
             su <strong className="font-bold">Identidad</strong>
             <br />
@@ -107,7 +107,7 @@ export function HeroSection({ hero }: Props) {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-[42rem] text-center md:mt-20">
+        <div className="mx-auto mt-8 max-w-[42rem] text-center md:mt-20">
           <p className="font-sans text-[clamp(0.95rem,1.45vw,1.3rem)] font-normal leading-[1.3] text-black md:text-[clamp(0.95rem,1.1vw,1.15rem)]">
             {lineOne}
           </p>

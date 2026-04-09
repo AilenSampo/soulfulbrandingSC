@@ -111,7 +111,7 @@ function AboutMobileSkyBlock({ aboutMore }: { aboutMore: SiteContentData["aboutM
 
         <div className="relative left-1/2 z-[1] mt-[4.5rem] w-screen max-w-[100vw] -translate-x-1/2 bg-brand-navy py-2.5 shadow-[0_-4px_20px_-8px_rgba(19,25,69,0.12)]">
           <p className="px-3 text-center text-[8px] font-medium uppercase leading-tight tracking-[0.2em] text-white/95 sm:text-[9px]">
-            SOULFUL BRANDING® EXPERIENCE · SOULFUL BRANDING® EXPERIENCE · SOULFUL BRANDING® EXPERIENCE
+            SOULFUL BRANDING® EXPERIENCE
           </p>
         </div>
       </div>
@@ -166,22 +166,40 @@ export function AboutMorePage({ aboutMore, method }: Props) {
           </div>
           <IntroBlock aboutMore={aboutMore} />
           <AboutMobileSkyBlock aboutMore={aboutMore} />
-          {/* Fila final móvil: imagen | texto (mockup) */}
-          <div className="grid min-w-0 grid-cols-2 items-stretch gap-0 overflow-hidden rounded-sm border border-neutral-300/25 shadow-[0_2px_12px_rgba(19,25,69,0.06)]">
-            <div className="relative h-full min-h-[200px] w-full min-w-0 bg-neutral-200/30">
-              <Image
-                src={aboutMore.imageMainLaptopUrl}
-                alt="Sofía Ciabattoni con laptop"
-                fill
-                className="object-cover object-[center_22%]"
-                sizes="50vw"
-              />
+          {/* Móvil: intro al lado de la imagen; resto del cierre abajo a todo el ancho */}
+          <div className="overflow-visible rounded-sm border border-neutral-300/25 px-2 py-3">
+            <div className="flex min-w-0 items-start gap-4">
+              <div className="relative w-[38%] max-w-[200px] shrink-0">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm bg-neutral-200/30">
+                  <Image
+                    src={aboutMore.imageMainLaptopUrl}
+                    alt="Sofía Ciabattoni con laptop"
+                    fill
+                    className="object-cover object-[center_22%]"
+                    sizes="200px"
+                  />
+                </div>
+              </div>
+              <div className="flex min-h-full min-w-0 flex-1 items-center px-1 pt-1">
+                <p className="max-w-[11.5rem] text-[0.98rem] font-semibold leading-[1.4] text-brand-navy">
+                  {aboutMore.closingIntro}
+                </p>
+              </div>
             </div>
-            <div className="relative -ml-px flex min-h-0 min-w-0 flex-col justify-center bg-neutral-200/50 px-2 py-3 sm:px-3 sm:py-4">
-              <ClosingBlock
-                aboutMore={aboutMore}
-                className="space-y-3 pb-0 text-[0.7rem] leading-[1.45] sm:text-[0.78rem] sm:leading-[1.5]"
-              />
+
+            <div className="mt-4 px-2 py-3 sm:px-3 sm:py-4">
+              <div className="space-y-3 pb-0 text-[0.7rem] leading-[1.45] text-brand-navy sm:text-[0.78rem] sm:leading-[1.5]">
+                <ul className="space-y-2 pl-1 [list-style:none]">
+                  {aboutMore.closingBullets.map((item) => (
+                    <li key={item} className="pl-3">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="pt-1">
+                  <strong className="font-semibold text-brand-navy">{aboutMore.closingOutro}</strong>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -229,7 +247,10 @@ export function AboutMorePage({ aboutMore, method }: Props) {
 
       <footer className="border-t border-brand-navy/20 bg-brand-navy py-3 text-[10px] font-medium uppercase tracking-[0.2em] text-white/90">
         <p className="mx-auto max-w-[1200px] px-4 text-center sm:px-6 lg:px-10">
-          SOULFUL BRANDING® EXPERIENCE · SOULFUL BRANDING® EXPERIENCE · SOULFUL BRANDING® EXPERIENCE
+          <span className="lg:hidden">SOULFUL BRANDING® EXPERIENCE</span>
+          <span className="hidden lg:inline">
+            SOULFUL BRANDING® EXPERIENCE · SOULFUL BRANDING® EXPERIENCE · SOULFUL BRANDING® EXPERIENCE
+          </span>
         </p>
       </footer>
     </div>

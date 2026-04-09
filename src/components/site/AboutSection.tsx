@@ -19,7 +19,7 @@ export function AboutSection({ about }: Props) {
           {/* Mobile: títulos + imagen con overlay */}
           <div className="md:col-span-2 md:hidden">
             <div className="text-center">
-              <p className="font-sans text-xs font-bold uppercase tracking-[0.28em] text-brand-navy">
+              <p className="hidden font-sans text-xs font-bold uppercase tracking-[0.28em] text-brand-navy">
                 {about.heading}
               </p>
               <p className="mt-3 font-sans text-[clamp(1.25rem,4.8vw,1.65rem)] font-bold uppercase tracking-[0.1em] text-brand-navy">
@@ -44,7 +44,7 @@ export function AboutSection({ about }: Props) {
                 </p>
                 <Link
                   href="/about"
-                  className="mt-7 inline-block text-[11px] font-bold uppercase tracking-[0.32em] text-white underline decoration-white/90 underline-offset-[6px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]"
+                  className="mt-7 inline-block text-[11px] font-bold uppercase tracking-normal text-white underline decoration-white/90 underline-offset-[6px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]"
                 >
                   {about.readMoreLabel}
                 </Link>
@@ -64,7 +64,7 @@ export function AboutSection({ about }: Props) {
             </p>
             <Link
               href="/about"
-              className="mt-10 inline-block text-xs font-bold uppercase tracking-[0.35em] text-brand-navy transition hover:opacity-70 md:mt-9 lg:mt-10"
+              className="mt-10 inline-block text-xs font-bold uppercase tracking-normal text-brand-navy transition hover:opacity-70 md:mt-9 lg:mt-10"
             >
               {about.readMoreLabel}
             </Link>

@@ -8,9 +8,18 @@ import {
 
 let lastGoodContent: SiteContentData | null = null;
 let dbRetryAfterMs = 0;
+let lastFetchAtMs = 0;
+const DEV_CACHE_TTL_MS = 60000;
 
 export async function getSiteContent(): Promise<SiteContentData> {
   const now = Date.now();
+  if (
+    process.env.NODE_ENV === "development" &&
+    lastGoodContent &&
+    now - lastFetchAtMs < DEV_CACHE_TTL_MS
+  ) {
+    return lastGoodContent;
+  }
   if (process.env.NODE_ENV === "development" && now < dbRetryAfterMs) {
     return lastGoodContent ?? defaultSiteContent();
   }
@@ -20,6 +29,7 @@ export async function getSiteContent(): Promise<SiteContentData> {
       ? fillEmptyMediaFromDefaults(parseSiteContent(row.data))
       : defaultSiteContent();
     lastGoodContent = content;
+    lastFetchAtMs = Date.now();
     dbRetryAfterMs = 0;
     return content;
   } catch (error) {
