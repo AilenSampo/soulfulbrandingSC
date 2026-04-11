@@ -228,8 +228,8 @@ export function StagesSection({ stages }: Props) {
           <SectionImage
             src={stages.imageUrl}
             alt=""
-            className="relative h-[23rem] w-full lg:h-[26rem] xl:h-[28rem]"
-            imgClassName="object-contain object-bottom"
+            className="relative h-[25rem] w-full lg:h-[28rem] xl:h-[30rem]"
+            imgClassName="object-contain object-center"
           />
         </div>
       </SectionShell>

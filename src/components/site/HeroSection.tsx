@@ -92,8 +92,8 @@ export function HeroSection({ hero }: Props) {
             <SectionImage
               src={hero.imageUrl}
               alt=""
-              className="relative aspect-[2/3] w-full overflow-visible"
-              imgClassName="object-[50%_18%] drop-shadow-[0_18px_24px_rgba(19,25,69,0.2)] sm:object-[50%_22%] md:object-[50%_30%]"
+              className="relative aspect-[2/3] w-full overflow-hidden"
+              imgClassName="object-cover object-[50%_18%] max-md:[clip-path:inset(0_0_6%_0)] sm:object-[50%_22%] md:object-[50%_30%] md:[clip-path:none]"
               priority
             />
           </div>

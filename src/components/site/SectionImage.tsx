@@ -15,6 +15,15 @@ function isRemote(u: string) {
   return u.startsWith("http://") || u.startsWith("https://");
 }
 
+/** Evita mezclar `object-cover` con `object-contain` (en CSS gana una regla arbitraria y suele recortar mal). */
+function hasCustomObjectFit(imgClassName?: string) {
+  if (!imgClassName?.trim()) return false;
+  return (
+    /\bobject-(cover|contain|fill|none|scale-down)\b/.test(imgClassName) ||
+    /\bobject-\[/.test(imgClassName)
+  );
+}
+
 export function SectionImage({ src, alt, className, imgClassName, priority }: Props) {
   if (!src || (typeof src === "string" && !src.trim())) {
     return (
@@ -36,14 +45,19 @@ export function SectionImage({ src, alt, className, imgClassName, priority }: Pr
     <div className={cn("relative overflow-hidden", className)}>
       {useImgTag ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt} className={cn("h-full w-full object-cover", imgClassName)} loading={priority ? "eager" : "lazy"} />
+        <img
+          src={src}
+          alt={alt}
+          className={cn("h-full w-full", !hasCustomObjectFit(imgClassName) && "object-cover", imgClassName)}
+          loading={priority ? "eager" : "lazy"}
+        />
       ) : (
         <Image
           src={src}
           alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className={cn("object-cover", imgClassName)}
+          className={cn(!hasCustomObjectFit(imgClassName) && "object-cover", imgClassName)}
           priority={priority}
           unoptimized={unoptimizedDev}
         />

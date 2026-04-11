@@ -4,8 +4,16 @@ import { HERO_PAPER_TEXTURE_URL } from "@/components/site/HeroSection";
 import { cn } from "@/lib/cn";
 
 const textBase = "text-[0.9375rem] font-normal leading-[1.65] text-black md:text-base md:leading-[1.7]";
+
+function splitMethodWatermark(text: string): { first: string; second: string } {
+  const idx = text.indexOf(" Branding");
+  if (idx === -1) return { first: text, second: "" };
+  return { first: text.slice(0, idx).trim(), second: text.slice(idx + 1).trim() };
+}
+
 type Props = { method: SiteContentData["method"] };
 export function AboutMethodSection({ method }: Props) {
+  const wm = splitMethodWatermark(method.watermarkText);
   return (
     <section
       id="metodo"
@@ -24,7 +32,7 @@ export function AboutMethodSection({ method }: Props) {
       />
 
       <div className="relative mx-auto max-w-[1200px] px-4 py-14 sm:px-6 lg:px-10 lg:py-20">
-        {/* Bloque intro: móvil título+só+imagen; desktop dos columnas */}
+        {/* Bloque intro: móvil título+imagen; desktop dos columnas con “SÓ” sobre la foto */}
         <div className="mt-6 grid gap-8 lg:mt-8 lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-start lg:gap-14">
           <div className="min-w-0">
             <div className="flex gap-4">
@@ -33,17 +41,14 @@ export function AboutMethodSection({ method }: Props) {
                 <h2 id="metodo-heading" className="mt-1 text-lg font-bold tracking-tight md:text-xl">
                   {method.title}
                 </h2>
-                <p className="mt-2 text-sm font-bold tracking-tight lg:hidden" aria-hidden>
-                  SÓ
-                </p>
               </div>
               <div className="relative w-[38%] max-w-[200px] shrink-0 lg:hidden">
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm bg-neutral-200/40">
                   <Image
                     src={method.imageTopUrl}
                     alt=""
                     fill
-                    className="object-cover object-[center_25%]"
+                    className="object-contain object-center"
                     sizes="200px"
                     unoptimized
                   />
@@ -66,12 +71,12 @@ export function AboutMethodSection({ method }: Props) {
             <p className="absolute right-0 top-0 z-10 text-sm font-bold tracking-tight" aria-hidden>
               SÓ
             </p>
-            <div className="relative mt-8 aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-sm lg:ml-auto">
+            <div className="relative mt-8 aspect-[4/5] w-full max-w-[360px] overflow-hidden rounded-sm bg-neutral-200/40 lg:ml-auto">
               <Image
                 src={method.imageTopUrl}
                 alt=""
                 fill
-                className="object-cover object-[center_25%]"
+                className="object-contain object-center"
                 sizes="360px"
                 unoptimized
               />
@@ -108,12 +113,12 @@ export function AboutMethodSection({ method }: Props) {
           </div>
 
           <div className="relative mx-auto w-full max-w-[260px] lg:mx-0 lg:max-w-none">
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm bg-neutral-200/40">
               <Image
                 src={method.imageBottomUrl}
                 alt=""
                 fill
-                className="object-cover object-[center_25%]"
+                className="object-contain object-center"
                 sizes="(max-width: 1024px) 260px, 280px"
                 unoptimized
               />
@@ -121,12 +126,13 @@ export function AboutMethodSection({ method }: Props) {
           </div>
         </div>
 
-        <p
-          className="pointer-events-none relative mt-12 select-none text-right text-[clamp(2.5rem,14vw,7rem)] font-bold leading-none tracking-tight text-neutral-300/50 md:mt-16 lg:mt-20"
+        <div
+          className="pointer-events-none relative mt-12 select-none text-center text-[clamp(2.5rem,14vw,7rem)] font-bold leading-none tracking-tight text-neutral-300/50 md:mt-16 lg:mt-20"
           aria-hidden
         >
-          {method.watermarkText}
-        </p>
+          <span className="block">{wm.first}</span>
+          {wm.second ? <span className="block">{wm.second}</span> : null}
+        </div>
       </div>
     </section>
   );

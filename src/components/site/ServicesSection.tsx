@@ -7,7 +7,7 @@ import type { SiteContentData } from "@/lib/site-content";
 import { SectionShell } from "@/components/site/SectionShell";
 import { cn } from "@/lib/cn";
 import servicesBg from "../../../assets/images/shared/servicios.jpeg";
-import servicesBgMobile from "../../../assets/images/shared/SO_VERTICAL.jpeg";
+import servicesBgMobile from "../../../assets/images/shared/SO_verticalampliacopyserviciosmobile.jpg";
 
 type Props = { services: SiteContentData["services"] };
 const RIBBON = [
@@ -15,7 +15,6 @@ const RIBBON = [
   "SOULFUL BRANDING® EXPERIENCE",
   "SOULFUL BRANDING® EXPERIENCE",
 ] as const;
-const MOBILE_SO_RIBBON = ["sô", "sô", "sô", "sô", "sô", "sô", "sô", "sô", "sô"] as const;
 const DEFAULT_OPEN_INDEX = 2;
 const SERVICE_CARD_DETAILS = [
   [
@@ -67,25 +66,25 @@ export function ServicesSection({ services }: Props) {
     <section
       id="servicios"
       ref={sectionRef}
-      className="relative scroll-mt-24 overflow-hidden bg-black pt-7 pb-0 md:pt-10 lg:pt-12"
+      className="relative scroll-mt-24 overflow-hidden bg-white pt-7 pb-0 md:bg-black md:pt-10 lg:pt-12"
     >
       <SectionShell className="relative z-10 px-0 sm:px-0 lg:px-0 xl:px-0">
         <div className="md:hidden">
           <div className="mx-auto max-w-[380px] px-4">
-            <div className="relative overflow-visible bg-white">
-              <div className="relative min-h-[27.75rem]">
+            <div className="relative overflow-visible bg-transparent">
+              <div className="relative min-h-[27.75rem] overflow-hidden bg-transparent">
                 <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
                   <Image
                     src={servicesBgMobile}
                     alt=""
                     fill
                     sizes="100vw"
-                    className="object-cover object-[center_28%] scale-[1.12]"
+                    className="object-cover object-[center_30%] [clip-path:inset(0_0_5%_0)]"
                     priority={false}
                   />
                 </div>
 
-                <h2 className="pointer-events-none absolute inset-x-0 top-[-1rem] z-10 text-center font-sans text-[clamp(3.45rem,16vw,5.15rem)] font-bold leading-[0.86] tracking-[-0.045em] text-brand-yellowPale">
+                <h2 className="sr-only">
                   {services.backgroundWord}
                 </h2>
 
@@ -109,20 +108,20 @@ export function ServicesSection({ services }: Props) {
                         className={cn(
                           "group flex flex-col rounded-md border border-black/12 text-left transition",
                           expanded
-                            ? "min-h-[8.6rem] bg-[#33322f] text-white shadow-[0_16px_30px_-20px_rgba(0,0,0,0.4)]"
-                            : "min-h-[3.05rem] bg-white/92 text-black/88 shadow-[0_8px_18px_-16px_rgba(0,0,0,0.2)] backdrop-blur-[1px]",
+                            ? "min-h-[9.4rem] bg-[#33322f] text-white shadow-[0_16px_30px_-20px_rgba(0,0,0,0.4)]"
+                            : "min-h-[3.35rem] bg-white/92 text-black/88 shadow-[0_8px_18px_-16px_rgba(0,0,0,0.2)] backdrop-blur-[1px]",
                         )}
                       >
-                        <div className="flex items-start gap-2 px-3 pt-2.5">
+                        <div className="flex items-start gap-2.5 px-3.5 pt-2.5">
                           <span
                             className={cn(
-                              "font-serif text-[0.82rem] font-semibold italic leading-none tabular-nums",
+                              "font-serif text-[0.95rem] font-semibold italic leading-none tabular-nums",
                               expanded ? "text-white" : "text-black/75",
                             )}
                           >
                             {i + 1}.
                           </span>
-                          <span className="font-sans text-[0.72rem] font-bold uppercase leading-[1.2] tracking-[0.01em]">
+                          <span className="font-sans text-[0.92rem] font-bold uppercase leading-[1.15] tracking-[0.01em]">
                             {item.title}
                           </span>
                         </div>
@@ -130,7 +129,7 @@ export function ServicesSection({ services }: Props) {
                         {expanded && (
                           <>
                             {detailLines.length > 1 ? (
-                              <ul className="space-y-1 px-3 pb-2 pt-2 text-[0.46rem] leading-[1.45] text-white/90">
+                              <ul className="space-y-1.5 px-3.5 pb-3 pt-2.5 text-[0.82rem] leading-[1.5] text-white/90">
                                 {detailLines.map((line) => (
                                   <li key={line} className="flex gap-1.5">
                                     <span className="shrink-0">-</span>
@@ -139,14 +138,14 @@ export function ServicesSection({ services }: Props) {
                                 ))}
                               </ul>
                             ) : (
-                              <p className="px-3 pb-2 pt-2 text-[0.46rem] leading-[1.45] text-white/90">
+                              <p className="px-3.5 pb-3 pt-2.5 text-[0.82rem] leading-[1.5] text-white/90">
                                 {detailLines[0]}
                               </p>
                             )}
                             {i === DEFAULT_OPEN_INDEX && (
                               <Link
                                 href="/?etapa=Necesito%20evolucionar&formulario=contacto-evolucion#contacto"
-                                className="px-3 pb-3 text-[0.58rem] font-bold uppercase tracking-[0.06em] text-white"
+                                className="px-3.5 pb-3.5 text-[0.72rem] font-bold uppercase tracking-[0.06em] text-white"
                               >
                                 +INFO
                               </Link>
@@ -159,15 +158,6 @@ export function ServicesSection({ services }: Props) {
                 </div>
               </div>
 
-              <div className="bg-black px-3 py-2">
-                <div className="flex items-center justify-between gap-1 text-center font-sans text-[0.55rem] font-bold uppercase leading-none tracking-[0.02em] text-brand-yellowPale">
-                  {MOBILE_SO_RIBBON.map((item, i) => (
-                    <span key={`${item}-${i}`} className="min-w-0 flex-1">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>

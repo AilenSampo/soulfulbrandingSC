@@ -247,8 +247,8 @@ export const defaultSiteContent = (): SiteContentData => ({
       "De la improvisación a la manifestación con intención (sistemas y fundamentos).",
     ],
     watermarkText: "Soulful Branding®",
-    imageTopUrl: "/media/about-expanded-top-left-seated-laptop.png",
-    imageBottomUrl: "/media/sofia-ipad-seated-1.png",
+    imageTopUrl: "/media/method-sofia-seated.png",
+    imageBottomUrl: "/media/method-sofia-ipad-laptop.png",
   },
   stages: {
     heading: "¿En qué momento te encuentras?",
@@ -323,6 +323,16 @@ export const defaultSiteContent = (): SiteContentData => ({
   },
 });
 
+/** Rutas `/uploads/…` solo existen en máquinas locales (gitignored); en Vercel hay que servir desde `/public/media`. */
+function methodImageUrlFromDb(
+  url: string | undefined,
+  fallback: string,
+): string {
+  const u = url?.trim() ?? "";
+  if (!u || u.startsWith("/uploads/")) return fallback;
+  return u;
+}
+
 /** Si en CMS quedaron URLs vacías, usa las rutas locales del mockup en `/public/media`. */
 export function fillEmptyMediaFromDefaults(data: SiteContentData): SiteContentData {
   const d = defaultSiteContent();
@@ -393,8 +403,8 @@ export function fillEmptyMediaFromDefaults(data: SiteContentData): SiteContentDa
       ...data.method,
       pillars: data.method?.pillars?.length ? data.method.pillars : d.method.pillars,
       transitions: data.method?.transitions?.length ? data.method.transitions : d.method.transitions,
-      imageTopUrl: data.method?.imageTopUrl || d.method.imageTopUrl,
-      imageBottomUrl: data.method?.imageBottomUrl || d.method.imageBottomUrl,
+      imageTopUrl: methodImageUrlFromDb(data.method?.imageTopUrl, d.method.imageTopUrl),
+      imageBottomUrl: methodImageUrlFromDb(data.method?.imageBottomUrl, d.method.imageBottomUrl),
     },
     stages: normalizeStagesSection({
       ...data.stages,

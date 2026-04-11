@@ -6,6 +6,12 @@ import { cn } from "@/lib/cn";
 
 const textBase = "text-[0.9375rem] font-normal leading-[1.65] md:text-base md:leading-[1.7]";
 
+function capitalizeLead(s: string) {
+  const t = s.trim();
+  if (!t) return t;
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
 type Props = {
   aboutMore: SiteContentData["aboutMore"];
   method: SiteContentData["method"];
@@ -102,7 +108,7 @@ function AboutMobileSkyBlock({ aboutMore }: { aboutMore: SiteContentData["aboutM
                 alt=""
                 width={200}
                 height={200}
-                className="h-auto w-full object-contain drop-shadow-[0_10px_22px_rgba(19,25,69,0.2)]"
+                className="h-auto w-full object-contain"
                 unoptimized
               />
             </div>
@@ -133,7 +139,7 @@ function BookImage({ aboutMore, fullWidth }: { aboutMore: SiteContentData["about
           alt="Sofía con el libro The Book of Alchemy"
           fill
           sizes="(max-width: 1024px) 90vw, 340px"
-          className="object-cover"
+          className="object-contain object-center"
           unoptimized
         />
       </div>
@@ -159,7 +165,7 @@ export function AboutMorePage({ aboutMore, method }: Props) {
               src={aboutMore.imagePortraitUrl}
               alt="Sofía Ciabattoni"
               fill
-              className="object-cover object-[center_28%]"
+              className="object-contain object-center"
               sizes="100vw"
               priority
             />
@@ -168,38 +174,36 @@ export function AboutMorePage({ aboutMore, method }: Props) {
           <AboutMobileSkyBlock aboutMore={aboutMore} />
           {/* Móvil: intro al lado de la imagen; resto del cierre abajo a todo el ancho */}
           <div className="overflow-visible rounded-sm border border-neutral-300/25 px-2 py-3">
-            <div className="flex min-w-0 items-start gap-4">
-              <div className="relative w-[38%] max-w-[200px] shrink-0">
+            <div className="flex min-w-0 flex-row-reverse items-start gap-3 sm:gap-4">
+              <div className="relative w-[38%] max-w-[200px] shrink-0 sm:max-w-[220px]">
                 <div className="relative aspect-[3/4] w-full overflow-hidden rounded-sm bg-neutral-200/30">
                   <Image
                     src={aboutMore.imageMainLaptopUrl}
                     alt="Sofía Ciabattoni con laptop"
                     fill
-                    className="object-cover object-[center_22%]"
-                    sizes="200px"
+                    className="object-contain object-center"
+                    sizes="(max-width: 640px) 38vw, 220px"
                   />
                 </div>
               </div>
-              <div className="flex min-h-full min-w-0 flex-1 items-center px-1 pt-1">
-                <p className="max-w-[11.5rem] text-[0.98rem] font-semibold leading-[1.4] text-brand-navy">
+              <div className="flex min-w-0 flex-1 flex-col py-0.5 pl-0 pr-1 text-left sm:pr-2">
+                <p className="text-[0.82rem] font-semibold leading-[1.22] text-brand-navy sm:text-[0.88rem] sm:leading-[1.26]">
                   {aboutMore.closingIntro}
                 </p>
+                <ul className="mt-3 space-y-1 pl-0 [list-style:none] sm:mt-3.5 sm:space-y-1.5">
+                  {aboutMore.closingBullets.map((item) => (
+                    <li key={item} className="text-[0.76rem] font-normal leading-[1.38] text-brand-navy sm:text-[0.8rem] sm:leading-[1.42]">
+                      {capitalizeLead(item)}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
             <div className="mt-4 px-2 py-3 sm:px-3 sm:py-4">
-              <div className="space-y-3 pb-0 text-[0.7rem] leading-[1.45] text-brand-navy sm:text-[0.78rem] sm:leading-[1.5]">
-                <ul className="space-y-2 pl-1 [list-style:none]">
-                  {aboutMore.closingBullets.map((item) => (
-                    <li key={item} className="pl-3">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <p className="pt-1">
-                  <strong className="font-semibold text-brand-navy">{aboutMore.closingOutro}</strong>
-                </p>
-              </div>
+              <p className="text-[0.7rem] leading-[1.45] text-brand-navy sm:text-[0.78rem] sm:leading-[1.5]">
+                <strong className="font-semibold text-brand-navy">{aboutMore.closingOutro}</strong>
+              </p>
             </div>
           </div>
         </div>
@@ -212,7 +216,7 @@ export function AboutMorePage({ aboutMore, method }: Props) {
                 src={aboutMore.imagePortraitUrl}
                 alt="Sofía Ciabattoni en su espacio de trabajo"
                 fill
-                className="object-cover object-[center_25%]"
+                className="object-contain object-center"
                 sizes="(max-width: 1024px) min(100vw, 420px), 440px"
                 priority
               />
@@ -233,7 +237,7 @@ export function AboutMorePage({ aboutMore, method }: Props) {
                   src={aboutMore.imageExpandedUrl}
                   alt="Sofía Ciabattoni"
                   fill
-                  className="object-cover object-[center_20%]"
+                  className="object-contain object-center"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
