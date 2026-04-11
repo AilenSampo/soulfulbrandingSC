@@ -125,7 +125,7 @@ export function PortfolioShowcase({ items }: Props) {
                   src={p.cover}
                   alt={p.title}
                   className="absolute inset-0 h-full w-full transition-transform duration-300 group-hover:scale-[1.06]"
-                  imgClassName="object-contain p-2 md:object-cover md:p-0"
+                  imgClassName="object-cover"
                 />
               </div>
               {showText ? (
