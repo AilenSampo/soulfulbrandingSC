@@ -49,7 +49,7 @@ function SocialRow({
   className?: string;
 }) {
   const igGradId = useId().replace(/:/g, "");
-  const mailto = contact.emailMailto?.trim() || "mailto:hola@soulfulbranding.com";
+  const mailto = contact.emailMailto?.trim() || "mailto:soficiabattoni@gmail.com";
   const substack = contact.substackUrl?.trim() || "https://substack.com";
   const pinterest = contact.pinterestUrl?.trim() || "https://www.pinterest.com";
   const items: { href: string; label: string; children: React.ReactNode }[] = [

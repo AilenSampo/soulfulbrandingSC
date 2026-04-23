@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond } from "next/font/google";
+import { ConsentScripts } from "@/components/site/ConsentScripts";
+import { CookieBanner } from "@/components/site/CookieBanner";
 import "./globals.css";
 
 /**
@@ -33,7 +35,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={garamondSerif.variable}>
-      <body className="font-sans font-normal">{children}</body>
+      <body className="font-sans font-normal">
+        {children}
+        <CookieBanner />
+        <ConsentScripts />
+      </body>
     </html>
   );
 }
