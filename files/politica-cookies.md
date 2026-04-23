@@ -50,7 +50,6 @@ Permiten recordar las elecciones del usuario (idioma, región, preferencias de v
 
 En caso de integrarse herramientas de seguimiento con fines publicitarios o de remarketing, se informará de manera específica y se solicitará el consentimiento previo del usuario.
 
-**Actualmente, este sitio no utiliza cookies de marketing.**
 
 ---
 
