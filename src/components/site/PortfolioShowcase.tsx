@@ -74,7 +74,7 @@ export function PortfolioShowcase({ items }: Props) {
   }, []);
 
   return (
-    <div className="relative mt-8 md:mt-3 md:min-h-0 md:flex-1 md:overflow-hidden">
+    <div className="relative mt-8 md:mt-3 md:min-h-0 md:overflow-hidden">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-20 hidden w-16 bg-gradient-to-r from-brand-page to-transparent md:block" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden w-16 bg-gradient-to-l from-brand-page to-transparent md:block" />
       <div

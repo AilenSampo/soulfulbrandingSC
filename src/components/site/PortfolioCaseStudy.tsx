@@ -1,15 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CaseStudyTestimonialDisclosure } from "@/components/site/CaseStudyTestimonialDisclosure";
 import type { PortfolioShowcaseItem } from "@/lib/portfolio-showcase";
 import { portfolioAssetUrl } from "@/lib/portfolio-asset-url";
 import type { PortfolioGalleryFile } from "@/lib/portfolio-gallery";
+import type { Testimonial } from "@/lib/testimonials";
+import { cn } from "@/lib/cn";
 
 type Props = {
   item: PortfolioShowcaseItem;
   gallery: PortfolioGalleryFile[];
+  testimonial?: Testimonial | null;
 };
 
-export function PortfolioCaseStudy({ item, gallery }: Props) {
+export function PortfolioCaseStudy({ item, gallery, testimonial }: Props) {
   const desktopCover = item.detailCoverDesktop ?? item.cover;
   const desktopCoverSrc = typeof desktopCover === "string" ? desktopCover : desktopCover.src;
   const desktopGalleryFilename =
@@ -27,15 +31,10 @@ export function PortfolioCaseStudy({ item, gallery }: Props) {
         <h1 className="font-serif text-3xl font-medium text-brand-navy md:text-4xl lg:text-5xl">{item.title}</h1>
       </header>
 
-      <div className="relative mt-8 aspect-square w-full overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80 md:hidden">
-        <Image
-          src={item.cover}
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
+      {testimonial ? <CaseStudyTestimonialDisclosure testimonial={testimonial} className="mt-4" /> : null}
+
+      <div className="relative mt-4 aspect-square w-full overflow-hidden rounded-2xl bg-neutral-100 ring-1 ring-neutral-200/80 md:hidden">
+        <Image src={item.cover} alt="" fill className="object-cover" sizes="100vw" priority />
       </div>
 
       <div className="mt-8 hidden w-full md:block">
@@ -48,15 +47,27 @@ export function PortfolioCaseStudy({ item, gallery }: Props) {
           <h2 className="sr-only">Trabajo</h2>
           <ul className="flex flex-col gap-0">
             {gallery.map((g) => {
-              const src = portfolioAssetUrl(item.id, g.filename);
+              const isDetailDuplicate = desktopGalleryFilename != null && g.filename === desktopGalleryFilename;
               return (
-                <li key={g.filename} className={g.filename === desktopGalleryFilename ? "overflow-hidden md:hidden" : "overflow-hidden"}>
+                <li
+                  key={g.filename}
+                  className={cn(
+                    "overflow-hidden",
+                    isDetailDuplicate && "hidden",
+                  )}
+                >
                   {g.kind === "video" ? (
-                    <video src={src} controls muted playsInline className="block h-auto w-full object-contain" preload="metadata" />
+                    <video
+                      src={portfolioAssetUrl(item.id, g.filename)}
+                      controls
+                      muted
+                      playsInline
+                      className="block h-auto w-full object-contain"
+                      preload="metadata"
+                    />
                   ) : (
-                    // Usamos la proporción real del archivo para evitar aire artificial entre piezas.
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={src} alt="" className="block h-auto w-full" loading="lazy" />
+                    <img src={portfolioAssetUrl(item.id, g.filename)} alt="" className="block h-auto w-full" loading="lazy" />
                   )}
                 </li>
               );

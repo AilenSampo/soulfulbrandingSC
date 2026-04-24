@@ -7,10 +7,13 @@ import { SectionImage } from "@/components/site/SectionImage";
 import { PortfolioCaseStudy } from "@/components/site/PortfolioCaseStudy";
 import { PORTFOLIO_SHOWCASE } from "@/lib/portfolio-showcase";
 import { getPortfolioGalleryFiles } from "@/lib/portfolio-gallery";
+import { findTestimonialForProjectSlug, getTestimonials } from "@/lib/testimonials";
 
-type Props = { params: Promise<{ slug: string }> };
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-export async function generateMetadata(ctx: Props) {
+export async function generateMetadata(ctx: Pick<PageProps, "params">) {
   const { slug } = await ctx.params;
   const item = PORTFOLIO_SHOWCASE.find((p) => p.id === slug);
   if (item) {
@@ -19,18 +22,20 @@ export async function generateMetadata(ctx: Props) {
   return { title: "Proyecto | Soulful Branding®" };
 }
 
-export default async function ProjectDetailPage(ctx: Props) {
+export default async function ProjectDetailPage(ctx: PageProps) {
   const { slug } = await ctx.params;
   const c = await getSiteContent();
 
   const showcase = PORTFOLIO_SHOWCASE.find((p) => p.id === slug);
   if (showcase) {
     const gallery = getPortfolioGalleryFiles(slug);
+    const allTestimonials = await getTestimonials();
+    const testimonial = findTestimonialForProjectSlug(slug, allTestimonials);
     return (
       <>
         <SiteHeader nav={c.nav} />
         <main className="min-h-screen bg-brand-page pb-10 pt-10">
-          <PortfolioCaseStudy item={showcase} gallery={gallery} />
+          <PortfolioCaseStudy item={showcase} gallery={gallery} testimonial={testimonial} />
         </main>
       </>
     );
