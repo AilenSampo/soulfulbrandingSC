@@ -60,10 +60,17 @@ function SocialRow({
   const emailWebHref = gmailWebComposeUrl(mailto);
   const substack = contact.substackUrl?.trim() || "https://substack.com";
   const pinterest = contact.pinterestUrl?.trim() || "https://www.pinterest.com";
-  const items: { href: string; label: string; children: React.ReactNode }[] = [
+  const items: {
+    href: string;
+    label: string;
+    /** Si el bloqueador impide `target=_blank`, abrimos en la misma pestaña. */
+    navigateFallback?: boolean;
+    children: React.ReactNode;
+  }[] = [
     {
       href: emailWebHref,
       label: "Email",
+      navigateFallback: true,
       children: (
         <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
           <path fill="#EA4335" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -118,15 +125,24 @@ function SocialRow({
   ];
 
   return (
-    <div className={cn("flex flex-wrap gap-4", className)}>
-      {items.map(({ href, label, children }) => {
+    <div className={cn("relative z-20 flex flex-wrap gap-4", className)}>
+      {items.map(({ href, label, navigateFallback, children }) => {
         const external = href.startsWith("http");
         return (
           <a
             key={label}
             href={href}
-            {...(external ? { target: "_blank" as const, rel: "noopener noreferrer" } : {})}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/90 shadow-sm ring-1 ring-black/5 transition hover:scale-105 hover:shadow-md"
+            {...(external && !navigateFallback ? { target: "_blank" as const, rel: "noopener noreferrer" } : {})}
+            {...(navigateFallback && external
+              ? {
+                  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault();
+                    const next = window.open(href, "_blank", "noopener,noreferrer");
+                    if (next == null) window.location.assign(href);
+                  },
+                }
+              : {})}
+            className="relative z-20 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/90 shadow-sm ring-1 ring-black/5 transition hover:scale-105 hover:shadow-md"
             aria-label={label}
           >
             {children}
