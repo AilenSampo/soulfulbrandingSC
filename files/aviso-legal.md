@@ -11,7 +11,7 @@ En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad d
 
 **Titular del sitio:** Sofia Ciabattoni  
 **Sitio web:** sofiaciabattoni.com  
-**Correo electrónico:** soficiabattoni@gmail.com  
+**Correo electrónico:** hola@sofiaciabattoni.com  
 **Jurisdicciones de actividad:** República Argentina y Reino de España
 
 ---
@@ -86,4 +86,4 @@ Para cualquier consulta relacionada con el contenido de este Aviso Legal:
 
 **Sofia Ciabattoni**  
 sitio web: sofiaciabattoni.com  
-correo electrónico: soficiabattoni@gmail.com
+correo electrónico: hola@sofiaciabattoni.com

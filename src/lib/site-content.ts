@@ -305,7 +305,7 @@ export const defaultSiteContent = (): SiteContentData => ({
     intro:
       "Me gustaría escuchar sobre tu proyecto y explorar cómo podemos crear algo significativo juntos.",
     instagramUrl: "https://instagram.com",
-    emailMailto: "mailto:soficiabattoni@gmail.com",
+    emailMailto: "mailto:hola@sofiaciabattoni.com",
     /** Placeholder visual mockup; reemplazar en admin con tus URLs reales */
     substackUrl: "https://substack.com",
     pinterestUrl: "https://www.pinterest.com",

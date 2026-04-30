@@ -98,4 +98,4 @@ Para consultas relacionadas con el uso de cookies en este sitio, podés escribir
 
 **Sofia Ciabattoni**  
 sitio web: sofiaciabattoni.com  
-correo electrónico: soficiabattoni@gmail.com
+correo electrónico: hola@sofiaciabattoni.com

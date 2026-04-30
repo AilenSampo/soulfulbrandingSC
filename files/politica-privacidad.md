@@ -9,7 +9,7 @@
 
 **Nombre:** Sofia Ciabattoni  
 **Sitio web:** sofiaciabattoni.com  
-**Correo electrónico de contacto:** soficiabattoni@gmail.com  
+**Correo electrónico de contacto:** hola@sofiaciabattoni.com  
 **Jurisdicciones:** República Argentina y Reino de España
 
 ---
@@ -140,4 +140,4 @@ Para ejercer derechos, realizar consultas o presentar reclamaciones relacionadas
 
 **Sofia Ciabattoni**  
 sitio web: sofiaciabattoni.com  
-correo electrónico: soficiabattoni@gmail.com
+correo electrónico: hola@sofiaciabattoni.com

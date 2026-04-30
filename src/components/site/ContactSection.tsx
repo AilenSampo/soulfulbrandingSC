@@ -41,6 +41,13 @@ const DEFAULT_FOOTER_LINES = [
   "SERVICIOS EXCLUSIVOS 1:1",
 ] as const;
 
+/** Abre la redacción en el navegador (Gmail). `mailto:` a veces no hace nada si no hay app de correo en el PC. */
+function gmailWebComposeUrl(mailtoHref: string): string {
+  const addr = mailtoHref.replace(/^mailto:/i, "").trim();
+  if (!addr) return "https://mail.google.com/mail/?view=cm&fs=1";
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(addr)}`;
+}
+
 function SocialRow({
   contact,
   className,
@@ -49,12 +56,13 @@ function SocialRow({
   className?: string;
 }) {
   const igGradId = useId().replace(/:/g, "");
-  const mailto = contact.emailMailto?.trim() || "mailto:soficiabattoni@gmail.com";
+  const mailto = contact.emailMailto?.trim() || "mailto:hola@sofiaciabattoni.com";
+  const emailWebHref = gmailWebComposeUrl(mailto);
   const substack = contact.substackUrl?.trim() || "https://substack.com";
   const pinterest = contact.pinterestUrl?.trim() || "https://www.pinterest.com";
   const items: { href: string; label: string; children: React.ReactNode }[] = [
     {
-      href: mailto,
+      href: emailWebHref,
       label: "Email",
       children: (
         <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
